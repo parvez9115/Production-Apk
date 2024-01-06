@@ -1,0 +1,10 @@
+.aa:focus {
+  border: 2px solid #b7ccdf !important;
+  outline: none;
+}
+.aa::-webkit-input-placeholder {
+  color: #e5e4ea;
+  text-align: center;
+  font-size: 14px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}

@@ -1,0 +1,49 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-icon
+        routerLink="/main-menu"
+        name="arrow-back"
+        style="padding: 10px"
+        slot="start"
+      ></ion-icon>
+    </ion-buttons>
+    <ion-title>Add New Device</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-row>
+    <ion-col style="text-align: center !important ">
+      <ion-button color="danger" style="width: 98%" (click)="qrscan()">
+        <ion-icon slot="start" name="qr-code"></ion-icon>
+        SCAN QR-CODE
+      </ion-button>
+    </ion-col>
+  </ion-row>
+  <jqxGrid
+    #myGrid
+    *ngIf="isshow"
+    [selectionmode]="'singlerow'"
+    [width]="'99%'"
+    [source]="dataAdapter"
+    [columns]="columns"
+    [autoheight]="true"
+    [sortable]="true"
+    [filterable]="true"
+    [
+    enablebrowserselection]="true"
+    [
+    columnsresize]="true"
+    [enabletooltips]="true"
+    [pageable]="true"
+    [showfilterrow]="true"
+    style="
+      font-size: 10px;
+      text-align: center !important;
+      margin: auto;
+      cursor: pointer;
+    "
+  >
+  </jqxGrid>
+</ion-content>

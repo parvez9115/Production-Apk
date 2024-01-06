@@ -1,0 +1,31 @@
+<ion-content [scrollEvents]="true" (ionScroll)="handleScroll($any($event))" [fullscreen]="true">
+  <ion-row><ion-col style="padding: 15px;"><span (click)="cancel()">Cancel</span></ion-col></ion-row>
+  <ion-searchbar [(ngModel)]="filterBy"></ion-searchbar>
+
+  <ion-row *ngIf="dealerlist.length == 0" style="display: flex; justify-content: center; margin-top: 40%">
+  </ion-row>
+
+  <ion-row>
+    <ion-col *ngIf="dealerlist.length > 0" size="12">
+      <ion-list *ngFor="let a of dealerlist | dealerFilter : filterBy" style="padding: 0 !important">
+
+        <ion-card style="width: 95%" style="
+            border-right: 20px;
+           
+          ">
+          <ion-card-content>
+            <ion-row style="
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+              ">
+              <ion-col>
+                <ion-checkbox [checked]="stin.includes(a) == true ? true : false" (ionChange)="selectStudent(a, $event)"
+                  style="display: flex;justify-content: space-between;">{{a}}</ion-checkbox>
+              </ion-col>
+
+            </ion-row>
+          </ion-card-content>
+        </ion-card>
+      </ion-list></ion-col></ion-row></ion-content>

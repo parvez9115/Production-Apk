@@ -1,0 +1,149 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-icon
+        routerLink="/main-menu"
+        name="arrow-back"
+        style="padding: 10px"
+        slot="start"
+      ></ion-icon>
+    </ion-buttons>
+    <ion-title>Add Delivery Details</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="content-style">
+  <ion-grid>
+    <ion-row class="form-field">
+      <ion-col size="12" size-sm="12" size-md="10" size-lg="12">
+        <form [formGroup]="salesForm">
+          <ion-row>
+            <ion-col>
+              <ion-label class="col-content">Dealer Name :</ion-label>
+
+              <ion-input
+                class="input"
+                (click)="dealerpoppup()"
+                formControlName="distributor"
+                placeHolder="Select Dealer Name ▼"
+              ></ion-input>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col>
+              <ion-label class="col-content">Invoice Number :</ion-label>
+              <ion-input
+                class="input"
+                (click)="invoicepopup()"
+                formControlName="invoiceno"
+                placeHolder="Select Invoice Number ▼"
+              ></ion-input>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col>
+              <ion-label class="col-content">Provider :</ion-label>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col
+              ><ion-radio-group value="VFI" (ionChange)="handleChange($event)">
+                <span style="margin-left: 10px">
+                  <ion-radio value="VFI" slot="start" checked></ion-radio
+                  ><ion-label class="vfi-btn">BSNL/VFI</ion-label></span
+                >
+
+                <span style="margin-left: 40%">
+                  <ion-radio value="Airtel" slot="start" checked></ion-radio
+                  ><ion-label class="airtel-btn">BSNL/Airtel</ion-label></span
+                >
+              </ion-radio-group></ion-col
+            >
+          </ion-row>
+
+          <ion-row>
+            <ion-col>
+              <ion-label class="col-content">Sales Date :</ion-label>
+
+              <input
+                class="input"
+                style="width: 100%; padding: 27px; padding-left: 15px"
+                [max]="maxDate"
+                type="date"
+                formControlName="salesdate"
+              />
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col>
+              <ion-label class="col-content"
+                >Quantity : {{totquantity}}</ion-label
+              >
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col style="text-align: center !important">
+              <ion-button
+                color="danger"
+                style="width: 98%; height: 40px; font-size: 16px"
+                (click)="qrscan()"
+              >
+                <ion-icon slot="start" name="qr-code"></ion-icon>
+                SCAN QR-CODE
+              </ion-button>
+            </ion-col>
+          </ion-row>
+        </form>
+
+        <ion-row class="content-style">
+          <ion-col style="text-align: center !important; padding: 20px">
+            <ion-button
+              class="button"
+              type="submit"
+              style="--background: #004c8f"
+              [disabled]="!salesForm.valid || tableData.length === 0"
+              (click)="submitBtn()"
+              >Submit</ion-button
+            >
+            <ion-button
+              class="button"
+              type="reset"
+              (click)="cancelBtn()"
+              style="--background: #004c8f"
+              >Clear</ion-button
+            >
+          </ion-col>
+        </ion-row>
+
+        <ion-row class="content-style">
+          <ion-col>
+            <jqxGrid
+              *ngIf="isshow && tableData.length > 0"
+              (onRowclick)="myGridOnRowSelect($event)"
+              #myGrid
+              [theme]="'material'"
+              [selectionmode]="'singlerow'"
+              [width]="'99%'"
+              [source]="dataAdapter"
+              [columns]="columns"
+              [height]="'300'"
+              [sortable]="true"
+              [filterable]="true"
+              [enablebrowserselection]="true"
+              [enabletooltips]="true"
+              [pageable]="true"
+              [showfilterrow]="true"
+              style="font-size: 16px; text-align: center !important"
+            >
+            </jqxGrid>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

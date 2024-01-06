@@ -1,0 +1,138 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-icon
+        routerLink="/main-menu"
+        name="arrow-back"
+        style="padding: 10px"
+        slot="start"
+      ></ion-icon>
+    </ion-buttons>
+    <ion-title>Add Production Details</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-row class="form-field" style="margin-top: 10px">
+    <ion-col
+      size="12"
+      size-sm="12"
+      size-md="10"
+      offset-md="1"
+      size-lg="12"
+      offset-lg="0"
+    >
+      <form [formGroup]="productionForm">
+        <div class="wrapper-form">
+          <ion-row>
+            <ion-col>
+              <ion-label class="col-content">Box Number :</ion-label>
+              <ion-item>
+                <ion-input value="{{serial }}" disabled></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col>
+              <ion-label class="col-content">Device Model :</ion-label>
+              <ion-input
+                class="input"
+                (click)="device()"
+                formControlName="devicemodel"
+                placeHolder="Select the Device Model ▼"
+              ></ion-input> </ion-col
+          ></ion-row>
+
+          <ion-row>
+            <ion-col>
+              <ion-label class="col-content">Quantity : {{Qty}}</ion-label>
+
+              <!-- <ion-input
+                style="min-height: 20px"
+                class="input"
+                type="number"
+                disabled
+                [(ngModel)]="Qty"
+                [ngModelOptions]="{ standalone: true }"
+                placeholder="Quantity"
+              ></ion-input> -->
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col style="text-align: center !important">
+              <ion-button
+                color="danger"
+                style="width: 98%; height: 40px; font-size: 16px"
+                [disabled]="deletebutton"
+                (click)="qrscan()"
+              >
+                <ion-icon slot="start" name="qr-code"></ion-icon>
+                SCAN QR-CODE
+              </ion-button>
+            </ion-col>
+          </ion-row>
+        </div>
+      </form>
+
+      <ion-row class="content-style">
+        <ion-col style="text-align: center !important; padding: 0px">
+          <ion-button
+            class="button"
+            type="submit"
+            [disabled]="!productionForm.valid"
+            (click)="submitBtn()"
+            style="--background: #004c8f"
+            >Submit</ion-button
+          >
+          <ion-button
+            class="button"
+            type="reset"
+            (click)="reset()"
+            style="--background: #004c8f"
+            >Clear</ion-button
+          >
+
+          <!-- <ion-button class="button" type="reset" (click)="login()">lo</ion-button> -->
+        </ion-col>
+      </ion-row>
+
+      <ion-row *ngIf="isshow" class="content-style">
+        <ion-col style="text-align: end !important; padding: 0px">
+          <ion-button
+            class="button"
+            (click)="deleteMode()"
+            style="--background: #004c8f"
+            >Delete</ion-button
+          >
+        </ion-col>
+      </ion-row>
+    </ion-col></ion-row
+  >
+
+  <jqxGrid
+    #myGrid
+    *ngIf="isshow && tableData.length > 0"
+    (onRowclick)="myGridOnRowSelect($event)"
+    [theme]="'material'"
+    [selectionmode]="'singlerow'"
+    [width]="'99%'"
+    [source]="dataAdapter"
+    [columns]="columns"
+    [height]="'300'"
+    [sortable]="true"
+    [filterable]="true"
+    [enablebrowserselection]="true"
+    [enabletooltips]="true"
+    [pageable]="true"
+    [showfilterrow]="true"
+    style="
+      font-size: 10px;
+      text-align: center !important;
+      margin: auto;
+      cursor: pointer;
+    "
+  >
+  </jqxGrid>
+</ion-content>

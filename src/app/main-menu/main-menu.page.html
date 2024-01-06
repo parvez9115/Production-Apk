@@ -1,0 +1,81 @@
+<ion-content [fullscreen]="true">
+  <div
+    style="
+      background-image: url('../../assets/bg.png');
+      background-size: 100% 100%;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      overflow: scroll;
+    "
+  >
+    <div
+      style="
+        display: flex;
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+      "
+    >
+      <ion-row>
+        <ion-col>
+          <!-- <ion-row
+            ><ion-col>
+              <ion-button
+                style="
+                  background-color: #004c8f;
+                  color: white;
+                  border-radius: 15px;
+                "
+                fill="clear"
+                (click)="addnewdevice()"
+                ><img src="../../assets/31.png" alt="Add New Device"
+              /></ion-button> </ion-col
+          ></ion-row> -->
+          <ion-row
+            ><ion-col>
+              <ion-button
+                style="
+                  background-color: #004c8f;
+                  color: white;
+                  border-radius: 15px;
+                "
+                fill="clear"
+                (click)="addproduction()"
+                ><img src="../../assets/32.png" alt="Add New Device"
+              /></ion-button> </ion-col
+          ></ion-row>
+          <ion-row
+            ><ion-col>
+              <ion-button
+                style="
+                  background-color: #004c8f;
+                  color: white;
+                  border-radius: 15px;
+                "
+                fill="clear"
+                (click)="adddelivery()"
+                ><img src="../../assets/33.png" alt="Add New Device"
+              /></ion-button> </ion-col
+          ></ion-row>
+          <ion-row
+            ><ion-col>
+              <ion-button
+                style="
+                  background-color: #004c8f;
+                  color: white;
+                  border-radius: 15px;
+                "
+                fill="clear"
+                (click)="confirmlogout()"
+              >
+                <img src="../../assets/34.png" alt="Add New Device"
+              /></ion-button> </ion-col
+          ></ion-row>
+        </ion-col>
+      </ion-row>
+    </div>
+  </div>
+</ion-content>

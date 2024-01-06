@@ -1,0 +1,30 @@
+// .nodata-wrapper {
+//   background: url("../assets/logo/loading.gif") no-repeat center center;
+//   // background: url("../assets/loginLogo/loader1.gif") no-repeat center center;
+//   // background: url("../assets/loginLogo/idea.png") no-repeat center center;
+//   height: 120vh;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+// }
+@media only screen and (min-width: 300px) and (max-width: 650px) {
+  .nodata-wrapper {
+    width: auto;
+    margin-top: 49%;
+    zoom: 33%;
+  }
+}
+@media only screen and (min-width: 651px) and (max-width: 1023px) {
+  .nodata-wrapper {
+    width: 49%;
+    margin: 12% auto;
+    zoom: 40%;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .nodata-wrapper {
+    width: 49%;
+    margin: 10% auto;
+    zoom: 50%;
+  }
+}
